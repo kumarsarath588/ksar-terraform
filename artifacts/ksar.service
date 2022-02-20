@@ -1,0 +1,19 @@
+[Unit]
+Description=System service which creates and manages the lifecycle of ksar
+Wants=network-online.target
+After=network-online.target
+
+
+[Service]
+Type=simple
+LimitNOFILE=1024
+
+Restart=on-failure
+RestartSec=10
+
+EnvironmentFile=/etc/environment
+ExecStartPre=/bin/sleep 3
+ExecStart=/usr/local/bin/ksar
+
+[Install]
+WantedBy=multi-user.target

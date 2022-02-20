@@ -1,0 +1,9 @@
+region = "us-west-1"
+ami_id = "ami-098f55b4287a885ba"
+instance_type = "t2.micro"
+vpc_subnet_id = "subnet-00959c9bcd4571c96"
+security_groups = ["sg-08171b989dd2dc5ff"]
+keypair ="calm-blueprints"
+DB_NAME = "tabsquare"
+DB_USER = "ksar"
+DB_PASS = "ksar@123"
