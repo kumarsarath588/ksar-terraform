@@ -24,7 +24,7 @@ resource "aws_instance" "ksar-mysql" {
     connection {
         type     = "ssh"
         user     = "centos"
-        private_key = file("/Users/saratkumar.k/calm-blueprints.key")
+        private_key = file("./calm-blueprints.key")
         host     = aws_instance.ksar-mysql.public_ip
     }
 
@@ -57,7 +57,7 @@ resource "aws_instance" "ksar" {
     connection {
         type     = "ssh"
         user     = "centos"
-        private_key = file("/Users/saratkumar.k/calm-blueprints.key")
+        private_key = file("./calm-blueprints.key")
         host     = self.public_ip
     }
 
