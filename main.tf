@@ -86,6 +86,11 @@ resource "aws_instance" "ksar" {
     }
 }
 
+resource "random_string" "lb_id" {
+  length  = 4
+  special = false
+}
+
 module "lb_security_group" {
   source  = "terraform-aws-modules/security-group/aws//modules/web"
   version = "3.17.0"
@@ -102,7 +107,7 @@ module "elb_http" {
   source  = "terraform-aws-modules/elb/aws"
   version = "2.4.0"
 
-  name     = "elb-ksar-dev"
+  name     = trimsuffix(substr(join("-", ["elb-ksar-dev", random_string.lb_id.result]), 0, 32), "-")
   internal = false
 
   security_groups = [module.lb_security_group.this_security_group_id]
