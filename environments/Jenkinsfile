@@ -65,7 +65,7 @@ pipeline {
               echo "******* At environment: ${env} ********"
               echo "*************************************************"
               terraform plan -var-file=aws.tfvars || exit 1
-              cd ../../../
+              cd ../../
             done
           fi'''
         }
@@ -83,7 +83,7 @@ pipeline {
 
           if [ -d "environments/${TARGET_ENV}/" ]; then
             cd environments/${TARGET_ENV}
-            terraform apply -input=false -var-file=aws.tfvars -auto-approve
+            terraform destroy -input=false -var-file=aws.tfvars -auto-approve
           else
             echo "*************** SKIPPING APPLY ******************"
             echo "Branch '$TARGET_ENV' does not represent an official environment."
