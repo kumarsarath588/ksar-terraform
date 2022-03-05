@@ -9,7 +9,6 @@ pipeline {
       steps {
         container('terraform') {
           sh '''
-          echo $CHANGE_TARGET
           if [[ $CHANGE_TARGET ]]; then
             TARGET_ENV=$CHANGE_TARGET
           else
@@ -46,7 +45,6 @@ pipeline {
       steps {
         container('terraform') {
           sh '''
-          echo $CHANGE_TARGET
           if [[ $CHANGE_TARGET ]]; then
             TARGET_ENV=$CHANGE_TARGET
           else
